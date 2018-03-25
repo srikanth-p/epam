@@ -1,6 +1,4 @@
 provider "aws" {
-    access_key = "AKIAI3LNHDRVI6XNAZGQ"
-    secret_key = "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"
 }
 
 /* The VPC that spans across multiple availability zones.
@@ -157,14 +155,6 @@ resource "aws_db_instance" "default" {
 */ 
 
 #IAM Policy to give read only access to s3 bucket
-resource "aws_iam_user" "test_user" {
-    name = "TEST_BUCKET_USER"
-}
-
-resource "aws_iam_access_key" "test_user" {
-    user = "${aws_iam_user.test_user.name}"
-}
-
 resource "aws_iam_user_policy" "test_user_ro" {
     name = "testbucketterraform"
     policy= <<EOF
